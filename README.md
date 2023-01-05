@@ -1,17 +1,14 @@
 # ArduflipperOne
-
-![IMG20230103145011](https://user-images.githubusercontent.com/20719445/210771874-05d3b8c1-cf02-4feb-a99e-f5ced7c6b473.jpg)
-![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772512-0f5f2d3b-8ad7-4d5a-8af6-e21a3cd9d274.jpg)
-
 Arduflipper is an Arduino based Flipper device , nothing else !
 i made this because i see many people like the functions of the Flipperzero ,
 mostly opening a tesla charge port , and the RF cloning function for simple RF device's .
+
+![IMG_20221225_15362634r5](https://user-images.githubusercontent.com/20719445/210774538-07f84027-da5c-4b93-aead-fa06398cc496.jpg)
+
 so for now its called Arduflipper One because whe have one function at the moment , 
 already added the support for BadUSB , and IR blaster , ( NOT ENOUGH SPACE inside the Arduino Nano and Uno )
 so for now have fun opening tesla charge ports and clone your RF remote and transmit .
 Have Fun , i wil update when i can 
-
-![IMG20230103145100](https://user-images.githubusercontent.com/20719445/210772371-4cd14c2e-b175-4388-a8e2-bf5cbbd46beb.jpg)
 
 for making a Arduflipper one Version 1.01 ,
 
@@ -21,8 +18,7 @@ what do you need !
 
 ![download (4)](https://user-images.githubusercontent.com/20719445/210767024-758f3b28-886a-4724-bd37-35992bebf89a.jpg)
 
-wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al other functions to fit .![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772498-1ac1aa0f-8c20-40c6-8151-73f52c9085a7.jpg)
-
+wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al other functions to fit .
 
 1 oled screen 128x64 i2c SSD1306 ,(the color you prefer )
 
@@ -42,6 +38,9 @@ wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al ot
 
 And a box to fit it , i made a 3D printable , wil also update this soon and make it available !
 
-![ardudexterpaper](https://user-images.githubusercontent.com/20719445/210367438-3c33d080-a0d0-4b85-a411-f0e6733814ea.png)
+![IMG20230103145011](https://user-images.githubusercontent.com/20719445/210771874-05d3b8c1-cf02-4feb-a99e-f5ced7c6b473.jpg)
+![IMG20230103145100](https://user-images.githubusercontent.com/20719445/210772371-4cd14c2e-b175-4388-a8e2-bf5cbbd46beb.jpg)
+![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772512-0f5f2d3b-8ad7-4d5a-8af6-e21a3cd9d274.jpg)
+
 
 wil ad more explanation soon ! 
