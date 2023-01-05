@@ -2,7 +2,6 @@
 
 ![IMG20230103145011](https://user-images.githubusercontent.com/20719445/210771874-05d3b8c1-cf02-4feb-a99e-f5ced7c6b473.jpg)
 ![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772512-0f5f2d3b-8ad7-4d5a-8af6-e21a3cd9d274.jpg)
-![IMG20230103145009](https://user-images.githubusercontent.com/20719445/210772127-17628e94-68c3-4f8b-b3fc-8fb82d890107.jpg)
 
 Arduflipper is an Arduino based Flipper device , nothing else !
 i made this because i see many people like the functions of the Flipperzero ,
@@ -44,3 +43,5 @@ wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al ot
 And a box to fit it , i made a 3D printable , wil also update this soon and make it available !
 
 ![ardudexterpaper](https://user-images.githubusercontent.com/20719445/210367438-3c33d080-a0d0-4b85-a411-f0e6733814ea.png)
+
+wil ad more explanation soon ! 
