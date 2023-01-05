@@ -1,4 +1,4 @@
-Pin wiring oled 
+ArduFlipper one pins .
 
 Because the OLED display uses I2C communication protocol, wiring is very simple. You just need to connect to the Arduino Uno I2C pins as shown in the table below.
 
