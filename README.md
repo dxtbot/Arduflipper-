@@ -44,3 +44,5 @@ And a box to fit it , i made a 3D printable , wil also update this soon and make
 
 
 wil ad more explanation soon ! 
+
+![Arduflipper pin setup](https://user-images.githubusercontent.com/20719445/210862213-3f1c1e45-ea4c-42ae-8809-15828baefeb5.jpg)
