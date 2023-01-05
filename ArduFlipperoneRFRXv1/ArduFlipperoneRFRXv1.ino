@@ -354,7 +354,7 @@ void rfrx () {
   display.clearDisplay();
   display.setTextColor(WHITE);
   display.setCursor(5, 3);
-  display.print("<< RECEIVED RF CODE ");
+  display.print("   RECEIVED RF CODE ");
   display.setCursor(10, 20);
   display.print(bitR1);;
   display.setCursor(80, 20);
