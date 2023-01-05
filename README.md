@@ -1,5 +1,10 @@
 # ArduflipperOne
-Arduflipper is an Arduino based FLipper device , nothing else !
+
+![IMG20230103145011](https://user-images.githubusercontent.com/20719445/210771874-05d3b8c1-cf02-4feb-a99e-f5ced7c6b473.jpg)
+![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772512-0f5f2d3b-8ad7-4d5a-8af6-e21a3cd9d274.jpg)
+![IMG20230103145009](https://user-images.githubusercontent.com/20719445/210772127-17628e94-68c3-4f8b-b3fc-8fb82d890107.jpg)
+
+Arduflipper is an Arduino based Flipper device , nothing else !
 i made this because i see many people like the functions of the Flipperzero ,
 mostly opening a tesla charge port , and the RF cloning function for simple RF device's .
 so for now its called Arduflipper One because whe have one function at the moment , 
@@ -7,6 +12,7 @@ already added the support for BadUSB , and IR blaster , ( NOT ENOUGH SPACE insid
 so for now have fun opening tesla charge ports and clone your RF remote and transmit .
 Have Fun , i wil update when i can 
 
+![IMG20230103145100](https://user-images.githubusercontent.com/20719445/210772371-4cd14c2e-b175-4388-a8e2-bf5cbbd46beb.jpg)
 
 for making a Arduflipper one Version 1.01 ,
 
@@ -16,7 +22,8 @@ what do you need !
 
 ![download (4)](https://user-images.githubusercontent.com/20719445/210767024-758f3b28-886a-4724-bd37-35992bebf89a.jpg)
 
-wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al other functions to fit .
+wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al other functions to fit .![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772498-1ac1aa0f-8c20-40c6-8151-73f52c9085a7.jpg)
+
 
 1 oled screen 128x64 i2c SSD1306 ,(the color you prefer )
 
