@@ -1,0 +1,32 @@
+Pin wiring oled 
+
+Because the OLED display uses I2C communication protocol, wiring is very simple. You just need to connect to the Arduino Uno I2C pins as shown in the table below.
+
+oled - Pins Arduino 
+( note if your oled has other adress then 0X3C , change display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  in Arduino sketch to correct i2c adress
+
+/////////////////////
+Vin	     5V
+GND	     GND
+SCL	     A5
+SDA	     A4
+////////////////
+
+Pin wiring 433 Mhz Rx Module 
+Module - Arduino pins
+/////////////////////////
+Vin      5v
+Data     3
+GND      GND
+/////////////////////////
+
+Pin wiring 433 Mhz Tx Module 
+Module - Arduino pins
+/////////////////////////
+Vin      5v
+Data     2
+GND      GND
+/////////////////////////
+
+
+wil ad more soon , 
