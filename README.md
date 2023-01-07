@@ -43,6 +43,11 @@ And a box to fit it , i made a 3D printable , wil also update this soon and make
 ![IMG20230103145006](https://user-images.githubusercontent.com/20719445/210772512-0f5f2d3b-8ad7-4d5a-8af6-e21a3cd9d274.jpg)
 
 
-wil ad more explanation soon ! 
+If your upload is a succes !
+if you push up , it wil transmit a Tesla charge point beacon twice .(you wil see Tesla logo on the screen )
+if you presh the sw button on the joypad you wil enter the menu for RX RF remotes .
+
+wil ad eeprom storage for recieved codes , and a seccond menu !
+
 
 ![Arduflipper pin setup](https://user-images.githubusercontent.com/20719445/210862213-3f1c1e45-ea4c-42ae-8809-15828baefeb5.jpg)
