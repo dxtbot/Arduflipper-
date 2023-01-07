@@ -11,7 +11,7 @@ so for now have fun opening tesla charge ports and clone your RF remote and tran
 Have Fun , i wil update when i can 
 
 //////////////////////////////////////////
-// Flipper Zero Arduino 7-1-2023  21:51 ///
+// ArduFlipper one 7-1-2023  21:51 ///
 //       MaDe By DeXtErBoT  TX+RX      ///
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // wil store 2 keys in eeprom after recieved one or 2 , NOTE !
