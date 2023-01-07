@@ -17,7 +17,7 @@ Have Fun , i wil update when i can
 // wil store 2 keys in eeprom after recieved one or 2 , NOTE !
 // third key wil replacing the first key again onley 2 keys max fit in storage //
 // wil remember the keys after power off , and reload them again //
-// to use the memory storage keyes press left for using storage 1 and right for storage 2 key //
+// to use the memory storage keys for transmiting ,press left for using storage 1 and right for storage 2 key //
 // it also wil store the bit rate type of the key //
 // pushing joystick up wil transmit a Tesla charge point key //
 // fast push button wil send you to menu ,in menu you do 2 second long press to get in the selected subject , RX or TX or BACK //
