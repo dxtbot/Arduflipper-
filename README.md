@@ -24,6 +24,16 @@ wil upgrade my project to a other one (Arduino Mega Mini ) for Bad usb and al ot
 
 ![download (2)](https://user-images.githubusercontent.com/20719445/210766292-b1a1427d-084e-433c-b7e5-55eb19ebbd40.jpg)
 
+For image resolution isue's 
+NOTE ! (for the oled screen change the resolution in the Adafruit_SSD1306.H file )
+
+   #define SSD1306_128_64   
+   
+//   #define SSD1306_128_32
+
+or just copy paste the Adafruit_SSD1306.H ( included ) over the original one ,and re upload your sketch 
+
+
 1 433 Mhz Transmitter and Reciever Module . 
 
 ![download](https://user-images.githubusercontent.com/20719445/210765297-00b1fe7e-c71d-4d87-af0a-19b12c4b3851.jpg)
