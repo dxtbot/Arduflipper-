@@ -1,8 +1,17 @@
 
 //////////////////////////////////////////
-// Flipper Zero Arduino 5-1-2023     ///
+// Flipper Zero Arduino 7-1-2023  21:51 ///
 //       MaDe By DeXtErBoT  TX+RX      ///
 //////////////////////////////////////////
+// wil store 2 keys in eeprom after recieved one or 2 , NOTE !
+// third key wil replacing the first key again onley 2 keys max fit in storage //
+// wil remember the keys after power off , and reload them again //
+// to use the memory storage keyes press left for using storage 1 and right for storage 2 key //
+// it also wil store the bit rate type of the key //
+// pushing joystick up wil transmit a Tesla charge point key //
+// fast push button wil send you to menu ,in menu you do 2 second long press to get in the selected subject , RX or TX or BACK //
+// wil make things better , enjoy this Beta version .// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //#include <HIDKeyboard.h>
 //HIDKeyboard keyboard;
 //#define debug1  // debug  //debug1 for analog inputs //
@@ -11,6 +20,8 @@
 //#define KEY_DELAY 50
 //const char command [] = "echo hello hackers";
 //#include <IRremote.h>
+////////////////////////////////////////////
+#include <EEPROM.h>
 ////////////////////////////////////////////
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -42,7 +53,16 @@ uint8_t bitR1 = 0;
 uint8_t protoc = 0;
 uint8_t menu = 0;
 uint8_t sellect = 0;
-uint8_t lister = 1;
+//uint8_t lister = 1;
+//////////////////////////////////////////////////////////////////////
+uint8_t eepromcount = 0;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+int lastButtonState = LOW;   // the previous reading from the input pin
+long lastDebounceTime = 0;  // the last time the output pin was toggled
+long debounceDelay = 80;    // the debounce time; increase if the output flickers
+int reading = 0;
 ////////////////////////////////////
 #include <RCSwitch.h>
 RCSwitch mySwitch = RCSwitch();
@@ -84,34 +104,29 @@ void setup() {
 }
 
 void loop() {
+  buttonreading();
+  delay(50);
   Serial.print("|"); ////////// serial out !!
   Serial.print("0"); ////////// serial out !!
   Serial.print("|"); ////////// serial out !!
   Serial.println("0"); ////////// serial out !!
   sensorValue1 = analogRead(analogInPin1);
   sensorValue2 = analogRead(analogInPin2);
-  buttonState = digitalRead(pushButton);
-  delay (100);
-  if (buttonState == LOW) {
-    display.clearDisplay();
-    display.drawBitmap(35, 15, Thumb, 64, 64, 1);
-    display.display();
-    buttonState = HIGH;
-    delay(100);
+  if (lastButtonState == LOW) {
     sellect = 1;
-    buttonState = HIGH;
+    delay(50);
+    mySwitch.resetAvailable();
+    lastButtonState = HIGH;
   }
   if (sellect == 1) {
-    buttonState = HIGH;
-    // delay(00);
+    lastButtonState = HIGH;
     menw();
     return;
   }
-
   if (sensorValue1 > 600 )teslachargeport();
-  // if (sensorValue1 < 500 )select = 3;;
-  if (sensorValue2 > 600 )screensaver ();
-  if (sensorValue2 < 500 )screensaver ();
+  if (sensorValue1 < 500 )screensaver ();
+  if (sensorValue2 > 600 )TX1();//screensaver ();
+  if (sensorValue2 < 500 )TX2();//screensaver ();
 #ifdef debug1
   if (sensorValue1 > 600 )Serial.println("UP");
   if (sensorValue1 < 500 )Serial.println("DOWN");
@@ -189,7 +204,6 @@ void teslachargeport() {
   }
   display.clearDisplay();
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// tesla send byte part ////
 void sendByte(uint8_t dataByte) {
   digitalWrite(ledPinP, HIGH);
@@ -200,19 +214,75 @@ void sendByte(uint8_t dataByte) {
   digitalWrite(ledPinP, HIGH);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void TX1() {
+  long number1 = readLongFromEEPROM(100);
+  int8_t Bitr1 = EEPROM.read(205);
+  Serial.print("Number: ");
+  Serial.println(number1);
+  Serial.print("Bitrate: ");
+  Serial.println(Bitr1);
+  Serial.print("|"); ////////// serial out !!
+  Serial.print("4"); ////////// serial out !!
+  Serial.print("|"); ////////// serial out !!
+  Serial.println(number1); ////////// serial out !!
+  display.clearDisplay();
+  display.drawBitmap(0, 0, myBitmapC, 128, 64, 1);
+  display.display();
+  delay(800);
+  mySwitch.send(number1, Bitr1);
+  select = 0;
+  display.setTextColor(WHITE);
+  display.setTextSize(1);
+  display.clearDisplay();
+  display.drawBitmap(0, 0, rximage, 128, 64, 1);
+  display.setCursor(68, 17);
+  display.print(number1);
+  display.setCursor(70, 29);
+  display.print("  FSK");
+  display.setCursor(70, 43);
+  display.print("TRANMIT");
+  display.display();
+  delay(3000);
+}
+
+void TX2() {
+  long number2 = readLongFromEEPROM(200);
+  int8_t Bitr2 = EEPROM.read(206);
+  Serial.print("Number1: ");
+  Serial.println(number2);
+  Serial.print("Bitrate: ");
+  Serial.println(Bitr2);
+  Serial.print("|"); ////////// serial out !!
+  Serial.print("4"); ////////// serial out !!
+  Serial.print("|"); ////////// serial out !!
+  Serial.println(number2); ////////// serial out !!
+  display.clearDisplay();
+  display.drawBitmap(0, 0, myBitmapC, 128, 64, 1);
+  display.display();
+  delay(800);
+  mySwitch.send(number2, Bitr2);
+  select = 0;
+  display.setTextColor(WHITE);
+  display.setTextSize(1);
+  display.clearDisplay();
+  display.drawBitmap(0, 0, rximage, 128, 64, 1);
+  display.setCursor(68, 17);
+  display.print(number2);
+  display.setCursor(70, 29);
+  display.print("  FSK");
+  display.setCursor(70, 43);
+  display.print("TRANMIT");
+  display.display();
+  delay(3000);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void menw() {
-  //buttonState == HIGH;
-  delay(200);
-  buttonState = digitalRead(pushButton);
-  if (buttonState == LOW) {
-    display.clearDisplay();
-    display.drawBitmap(35, 15, Thumb, 64, 64, 1);
-    display.display();
-    buttonState = HIGH;
-    delay(200);
+  buttonreading();
+  delay(100);
+  if (lastButtonState == LOW) {
     sellect = 0;
-    delay(200);
-    buttonState = HIGH;
+    lastButtonState = HIGH;
+    delay(500);
     return;
   }
   if (sensorValue1 > 600 )menu = menu - 1;
@@ -221,7 +291,6 @@ void menw() {
   // if (sensorValue2 < 500 )lister = lister - 1;
   if (menu > 3)menu = 1;
   if (menu < 1)menu = 3;
-  delay(100);
   display.setTextColor(WHITE);
   display.setTextSize(1);
   display.clearDisplay();
@@ -239,18 +308,17 @@ void menw() {
   display.drawLine(0, 30, 50, 30, WHITE);
   display.drawLine(0, 50, 50, 50, WHITE);
   display.display();
-  // delay(500);
   if (menu == 1) {
     display.setTextColor(WHITE);
     display.setCursor(0, 20);
     display.print("*");;
     display.display();
-    delay(100);
+    delay(50);
     display.setTextColor(BLACK);
     display.setCursor(0, 20);
     display.print(" ");
     display.display();
-    delay(100);
+    delay(50);
     select = 1;
   }
   if (menu == 2) {
@@ -258,12 +326,12 @@ void menw() {
     display.setCursor(0, 40);
     display.print("*");
     display.display();
-    delay(100);
+    delay(50);
     display.setTextColor(BLACK);
     display.setCursor(0, 40);
     display.print(" ");
     display.display();
-    delay(100);
+    delay(50);
     select = 2;
   }
   if (menu == 3) {
@@ -271,12 +339,12 @@ void menw() {
     display.setCursor(0, 60);
     display.print("*");
     display.display();
-    delay(100);
+    delay(50);
     display.setTextColor(BLACK);
     display.setCursor(0, 60);
     display.print(" ");
     display.display();
-    delay(100);
+    delay(50);
     select = 0;
   }
 }
@@ -292,22 +360,22 @@ void screensaver () {
   Serial.print("|"); ////////// serial out !!
   Serial.println("0"); ////////// serial out !!
 }
-
+//////////////////////////////////////////////////////////////////////////
 void rfrx () {
   if (mySwitch.available()) {
     saverscr = 0;
-    display.setTextColor(WHITE);
-    display.setTextSize(1);
-    display.clearDisplay();
-    display.drawBitmap(0, 0, rximage, 128, 64, 1);
-    display.setCursor(70, 17);
-    display.print("433 Mhz");
-    display.setCursor(70, 29);
-    display.print("  FSK");
-    display.setCursor(70, 43);
-    display.print("FOUND !");
-    display.display();
-    delay(3000);
+    /*  display.setTextColor(WHITE);
+      display.setTextSize(1);
+      display.clearDisplay();
+      display.drawBitmap(0, 0, rximage, 128, 64, 1);
+      display.setCursor(70, 17);
+      display.print("433 Mhz");
+      display.setCursor(70, 29);
+      display.print("  FSK");
+      display.setCursor(70, 43);
+      display.print("FOUND !");
+      display.display();
+    */
     Serial.print("|"); ////////// serial out !!
     Serial.print("3"); ////////// serial out !!
     Serial.print("|"); ////////// serial out !!
@@ -329,7 +397,29 @@ void rfrx () {
     store1 = mySwitch.getReceivedValue();
     bitR1 = mySwitch.getReceivedBitlength();
     protoc = mySwitch.getReceivedProtocol();
-    delay(3000);
+
+    eepromcount = eepromcount + 1;
+    delay(2000);
+    if (eepromcount >= 3)eepromcount = 1;
+    if (eepromcount == 1) {
+      EEPROM.write(205, bitR1);
+      writeLongIntoEEPROM(100, store1);
+      display.clearDisplay();
+      display.setCursor(0, 20);
+      display.print("     Stored 1 ");
+      display.display();
+      delay(500);
+    }
+    if (eepromcount == 2) {
+      EEPROM.write(206, bitR1);
+      writeLongIntoEEPROM(200, store1);
+      display.clearDisplay();
+      display.setCursor(0, 20);
+      display.print("    Stored 2 ");
+      display.display();
+      delay(500);
+    }
+    //// value = EEPROM.read(address);
     Serial.print("|"); ////////// serial out !!
     Serial.print("3"); ////////// serial out !!
     Serial.print("|"); ////////// serial out !!
@@ -370,7 +460,7 @@ void rfrx () {
   display.drawLine(0, 14, 128, 14, WHITE);
   display.drawLine(0, 52, 128, 52, WHITE);
   display.display();
-  delay(500);
+  delay(100);
   //  display.clearDisplay();
   //   display.setTextColor(WHITE);
   //   display.setCursor(5, 3);
@@ -382,3 +472,35 @@ void rfrx () {
   //   delay(500);
 }
 
+void writeLongIntoEEPROM(int address, long number)
+{
+  EEPROM.write(address, (number >> 24) & 0xFF);
+  EEPROM.write(address + 1, (number >> 16) & 0xFF);
+  EEPROM.write(address + 2, (number >> 8) & 0xFF);
+  EEPROM.write(address + 3, number & 0xFF);
+}
+
+long readLongFromEEPROM(int address)
+{
+  return ((long)EEPROM.read(address) << 24) +
+         ((long)EEPROM.read(address + 1) << 16) +
+         ((long)EEPROM.read(address + 2) << 8) +
+         (long)EEPROM.read(address + 3);
+}
+void buttonreading () {
+  reading = digitalRead(pushButton);
+  if (reading != lastButtonState) {
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+  }
+
+  lastButtonState = reading;
+  if (reading == LOW) {
+    display.clearDisplay();
+    display.drawBitmap(35, 15, Thumb, 64, 64, 1);
+    display.display();
+    delay(100);
+  }
+}
