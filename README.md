@@ -10,19 +10,21 @@ already added the support for BadUSB , and IR blaster , ( NOT ENOUGH SPACE insid
 so for now have fun opening tesla charge ports and clone your RF remote and transmit .
 Have Fun , i wil update when i can 
 
-//////////////////////////////////////////
-// ArduFlipper one 7-1-2023  21:51 ///
-//       MaDe By DeXtErBoT  TX+RX      ///
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// wil store 2 keys in eeprom after recieved one or 2 , NOTE !
-// third key wil replacing the first key again onley 2 keys max fit in storage //
-// wil remember the keys after power off , and reload them again //
-// to use the memory storage keys for transmiting ,press left for using storage 1 and right for storage 2 key //
-// it also wil store the bit rate type of the key //
-// pushing joystick up wil transmit a Tesla charge point key //
-// fast push button wil send you to menu ,in menu you do 2 second long press to get in the selected subject , RX or TX or BACK //
-// wil make things better , enjoy this Beta version .// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ArduFlipper one 7-1-2023  21:51 
+
+it wil store 2 keys in eeprom after recieved one or 2 .
+third key wil replace the first key again onley 2 keys max fit in storage 
+wil remember the keys after power off , and reload them again. 
+to use the memory storage keys for transmiting ,press left for using storage 1 and right for storage 2 key. 
+it also wil store the bit rate type of the key .
+pushing joystick up wil transmit a Tesla charge point key 
+fast push button wil send you to menu .
+in menu you do 2 second long press to get in the selected subject .
+RX or TX or BACK.
+
+wil make things better , enjoy this Beta version .
+
 
 for making a Arduflipper one Version 1.01 ,
 
