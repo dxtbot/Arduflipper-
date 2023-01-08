@@ -11,13 +11,12 @@ so for now have fun opening tesla charge ports and clone your RF remote and tran
 Have Fun , i wil update when i can 
 
 
-ArduFlipper one 7-1-2023  21:51 
+ArduFlipper one v1.01 Beta
 
 it wil store 2 keys in eeprom after recieved one or 2 .
-third key wil replace the first key again onley 2 keys max fit in storage 
-wil remember the keys after power off , and reload them again. 
-to use the memory storage keys for transmiting ,press left for using storage 1 and right for storage 2 key. 
+third key wil replace the first key again onley 2 keys max fit in storage
 it also wil store the bit rate type of the key .
+to use the memory stored keys . go to main logo ,press left for using storage 1 and right for storage 2 key. 
 pushing joystick up wil transmit a Tesla charge point key 
 fast push button wil send you to menu .
 in menu you do 2 second long press to get in the selected subject .
