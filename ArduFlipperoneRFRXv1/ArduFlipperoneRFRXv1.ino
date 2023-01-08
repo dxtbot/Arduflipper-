@@ -1,6 +1,6 @@
-
+//1.01 Beta
 //////////////////////////////////////////
-// Flipper Zero Arduino 7-1-2023  21:51 ///
+// Flipper Zero Arduino  7-1-2023  21:51 ///
 //       MaDe By DeXtErBoT  TX+RX      ///
 //////////////////////////////////////////
 // wil store 2 keys in eeprom after recieved one or 2 , NOTE !
