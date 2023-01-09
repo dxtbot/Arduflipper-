@@ -1,6 +1,6 @@
 //1.01 Beta
 //////////////////////////////////////////
-// Flipper Zero Arduino 7-1-2023     ///
+// Flipper Zero Arduino 9-1-2023     ///
 //       MaDe By DeXtErBoT  TX+RX      ///
 //////////////////////////////////////////
 // wil store 2 keys in eeprom after recieved one or 2 , NOTE !
@@ -46,7 +46,7 @@ uint8_t buff = 0;
 uint8_t selection = 0;
 uint8_t saverscr = 0;
 uint8_t buttonState = 0;
-int store1 = 0;
+long store1 = 0;
 uint8_t bitR1 = 0;
 uint8_t protoc = 0;
 uint8_t menu = 1;
@@ -127,7 +127,6 @@ void loop() {
     display.clearDisplay();
     display.drawBitmap(0, 0, myBitmapC, 128, 64, 1);
     display.display();
-    //delay(200);
     if (buff == 1)select = 1;
     if (buff == 2)select = 2;
     if (buff == 3)select = 3;
@@ -157,7 +156,6 @@ void loop() {
   display.clearDisplay();
   display.drawBitmap(0, 0, FlipperLogo, 128, 64, 1);
   display.display();
-  // delay (100);
   if (sensorValue1 > 600 )teslachargeport();
   if (sensorValue1 < 500 )screensaver ();
   if (sensorValue2 > 600 )TX1();//screensaver ();
@@ -185,7 +183,7 @@ void teslachargeport() {
     Serial.print("1"); ////////// serial out !!
     Serial.print("|"); ////////// serial out !!
     Serial.println("0"); ////////// serial out !!
-    select = 1;
+    select = 0;
   }
   display.clearDisplay();
 }
@@ -202,10 +200,6 @@ void sendByte(uint8_t dataByte) {
 void TX1() {
   long number1 = readLongFromEEPROM(100);
   int8_t Bitr1 = EEPROM.read(205);
-  Serial.print("Number: ");
-  Serial.println(number1);
-  Serial.print("Bitrate: ");
-  Serial.println(Bitr1);
   Serial.print("|"); ////////// serial out !!
   Serial.print("4"); ////////// serial out !!
   Serial.print("|"); ////////// serial out !!
@@ -233,10 +227,6 @@ void TX1() {
 void TX2() {
   long number2 = readLongFromEEPROM(200);
   int8_t Bitr2 = EEPROM.read(206);
-  Serial.print("Number1: ");
-  Serial.println(number2);
-  Serial.print("Bitrate: ");
-  Serial.println(Bitr2);
   Serial.print("|"); ////////// serial out !!
   Serial.print("4"); ////////// serial out !!
   Serial.print("|"); ////////// serial out !!
@@ -324,8 +314,6 @@ void menw() {
     delay(50);
     select = 0;
   }
-  // reading = digitalRead(pushButton);
-  // if (reading = LOW) return;
 }
 ////////////////////////////
 void screensaver () {
@@ -347,7 +335,7 @@ void rfrx () {
     Serial.print("3"); ////////// serial out !!
     Serial.print("|"); ////////// serial out !!
     Serial.println("0"); ////////// serial out !!
-    int value = mySwitch.getReceivedValue();
+    //  int value = mySwitch.getReceivedValue();
     display.clearDisplay();
     display.drawBitmap(64, 0, remoto, 64, 64, 1);
     display.setCursor(0, 0);
@@ -365,6 +353,7 @@ void rfrx () {
     bitR1 = mySwitch.getReceivedBitlength();
     protoc = mySwitch.getReceivedProtocol();
     eepromcount = eepromcount + 1;
+    Serial.println(store1); ////////// serial out !!
     delay(2000);
     if (eepromcount >= 3)eepromcount = 1;
     if (eepromcount == 1) {
@@ -390,7 +379,7 @@ void rfrx () {
     Serial.print("3"); ////////// serial out !!
     Serial.print("|"); ////////// serial out !!
     Serial.println(store1); ////////// serial out !!
-    if (value == 0) {
+    if (store1 == 0) {
       display.clearDisplay();
       display.setCursor(0, 20);
       display.print("Unknown encoding");
